@@ -14,7 +14,7 @@ public class Linter {
 			while(readIn.hasNextLine()){
 				boolean success = true;
 				lineNum++;
-				success = checkLine(readIn.nextLine());
+				success = checkLineForSemi(readIn.nextLine());
 				if(!success){
 					System.out.println(lineNum + ". Statement should end in a semicolon");
 					allGood = false;
@@ -30,7 +30,7 @@ public class Linter {
 
 	}
 	
-	public static boolean checkLine(String line){
+	public static boolean checkLineForSemi(String line){
 		if(line.matches("\\s*$")){
 			//System.out.println("Whitespace");
 			return true;
