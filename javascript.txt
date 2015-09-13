@@ -1,0 +1,5 @@
+javascript stuff start;
+do the thing{
+	var isScript = yeah;
+	lolz!!!!
+}
