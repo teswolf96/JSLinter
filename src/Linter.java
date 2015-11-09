@@ -14,9 +14,9 @@ public class Linter {
 			while(readIn.hasNextLine()){
 				boolean success = true;
 				lineNum++;
-				success = checkLineForSemi(readIn.nextLine());
+				String newLine = readIn.nextLine();
+				success = checkLine(newLine ,lineNum);
 				if(!success){
-					System.out.println(lineNum + ". Statement should end in a semicolon");
 					allGood = false;
 				}
 			}
@@ -30,7 +30,7 @@ public class Linter {
 
 	}
 	
-	public static boolean checkLineForSemi(String line){
+	public static boolean checkLine(String line, int lineNum){
 		if(line.matches("\\s*$")){
 			//System.out.println("Whitespace");
 			return true;
@@ -43,11 +43,33 @@ public class Linter {
 			//System.out.println("OPEN BRACE!");
 			return true;
 		}
+		
 		else if(line.matches("\\}$")){
 			//System.out.println("CLOSE BRACE!");
 			return true;
 		}
-		//System.out.println("NO SEMICOLON LOSER");
+		else if(line.matches(".*;\\s+$")){
+			System.out.println(lineNum + ". Whitepace at end of line");
+			return false;
+			
+		}
+		else if(line.matches(".*$")){
+			System.out.println(lineNum + ". Statement should end in a semicolon");
+			return false;
+		}else if(line.matches(".*\\z")){
+			System.out.println(lineNum + ". cats");
+			return false;
+		}
 		return false;
+		//System.out.println("NO SEMICOLON LOSER");
+		//return false;
+	}
+	
+	public static boolean checkEOF(String line, int lineNum){
+		if(line.matches("\\z")){
+			System.out.println("EOF PROBLEM");
+			return false;
+		}
+		return true;
 	}
 }
