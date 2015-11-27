@@ -36,24 +36,36 @@ public class Linter {
 			//System.out.println("Whitespace");
 			return true;
 		}
+        else if(line.matches(".+==.+$") && !line.matches(".+===.+$")){
+            System.out.println(lineNum + ". Should only use strict equality.");
+            return false;
+        }
 		else if(line.matches(".*;$")){
 			//System.out.println("Proper semi usage!");
 			return true;
-		}
-        else if(line.matches(".*\\{$")){
-			//System.out.println("OPEN BRACE!");
-			return true;
-		}
-		
-		else if(line.matches("\\s*}$")){
-			//System.out.println("CLOSE BRACE!");
-			return true;
-		}
+        }else if(line.matches("\\s*\\{")){
+            System.out.println(lineNum + ".  Open curly brace should not stand-alone.");
+            return false;
+        }
+        else if(line.matches(".+\\{$")) {
+            //System.out.println("OPEN BRACE!");
+            return true;
+        }
+        else if(line.matches("\\s*}$")){
+            //System.out.println("CLOSE BRACE!");
+            return true;
+        }
+        else if(line.matches(".+\\}")) {
+            System.out.println(lineNum + ". Closing curly brace should stand-alone.");
+            return false;
+        }
+
 		else if(line.matches(".*;\\s+$") || line.matches(".*\\}\\s+$") || line.matches(".*\\{\\s+$")){
 			System.out.println(lineNum + ". Whitepace at end of line");
 			return false;
 			
 		}
+
 		else if(line.matches(".*$")){
 			System.out.println(lineNum + ". Statement should end in a semicolon");
 			return false;
