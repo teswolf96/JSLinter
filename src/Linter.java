@@ -40,10 +40,11 @@ public class Linter {
             System.out.println(lineNum + ". Should only use strict equality.");
             return false;
         }
-		else if(line.matches(".*;$")){
-			//System.out.println("Proper semi usage!");
-			return true;
-        }else if(line.matches("\\s*\\{")){
+        else if(line.matches(".*\".*\".*") && !line.matches(".*\".*\'.*\".*")){
+            System.out.println(lineNum + ". Should use single quotes.");
+            return false;
+        }
+        else if(line.matches("\\s*\\{")){
             System.out.println(lineNum + ".  Open curly brace should not stand-alone.");
             return false;
         }
@@ -65,7 +66,10 @@ public class Linter {
 			return false;
 			
 		}
-
+        else if(line.matches(".*;$")){
+            //System.out.println("Proper semi usage!");
+            return true;
+        }
 		else if(line.matches(".*$")){
 			System.out.println(lineNum + ". Statement should end in a semicolon");
 			return false;
