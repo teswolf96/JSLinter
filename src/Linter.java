@@ -40,16 +40,16 @@ public class Linter {
 			//System.out.println("Proper semi usage!");
 			return true;
 		}
-		else if(line.matches(".*\\{$")){
+        else if(line.matches(".*\\{$")){
 			//System.out.println("OPEN BRACE!");
 			return true;
 		}
 		
-		else if(line.matches("\\}$")){
+		else if(line.matches("\\s*}$")){
 			//System.out.println("CLOSE BRACE!");
 			return true;
 		}
-		else if(line.matches(".*;\\s+$")){
+		else if(line.matches(".*;\\s+$") || line.matches(".*\\}\\s+$") || line.matches(".*\\{\\s+$")){
 			System.out.println(lineNum + ". Whitepace at end of line");
 			return false;
 			
