@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 public class Linter {
-	
+
 	public static void main(String[] args){
 		try {
 			Scanner readIn = new Scanner(new FileReader(args[0]));
