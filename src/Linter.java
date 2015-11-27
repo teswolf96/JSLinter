@@ -36,12 +36,20 @@ public class Linter {
 			//System.out.println("Whitespace");
 			return true;
 		}
+        else if(line.length() > 80){
+            System.out.println(lineNum + ". Lines should not be longer than 80 characters.");
+            return false;
+        }
         else if(line.matches(".+==.+$") && !line.matches(".+===.+$")){
             System.out.println(lineNum + ". Should only use strict equality.");
             return false;
         }
         else if(line.matches(".*\".*\".*") && !line.matches(".*\".*\'.*\".*")){
             System.out.println(lineNum + ". Should use single quotes.");
+            return false;
+        }
+        else if(line.matches(".*;.*;")){
+            System.out.println(lineNum + ". Use only one statement per line.");
             return false;
         }
         else if(line.matches("\\s*\\{")){
