@@ -1,5 +1,29 @@
-javascript stuff start;
-do the thing{
-	var isScript = yeah;
-	lolz!!!!
+Case 1;
+good line;
+bad line
+
+Case 2;
+Good line;
+Bad line;
+
+Case 3;
+Good usage{
 }
+
+{
+bad usage}
+
+Case 4;
+good === yes;
+bad == no;
+
+Case 5;
+"Good ' statement";
+'Also good';
+"Not good";
+
+Case 6;
+Good!;
+Bad; Command;
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

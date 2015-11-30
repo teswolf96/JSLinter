@@ -17,6 +17,10 @@ public class Linter {
 				lineNum++;
 				String newLine = readIn.nextLine();
 				success = checkLine(newLine ,lineNum);
+				if(!readIn.hasNextLine() && !newLine.equalsIgnoreCase("")) {
+                    System.out.println("NO NEW LINE");
+                    success = false;
+                }
 				if(!success){
 					allGood = false;
 				}
